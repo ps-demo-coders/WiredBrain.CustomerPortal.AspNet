@@ -16,7 +16,7 @@ namespace WiredBrain.CustomerPortal.AspNet
             //    await next();
             //});
 
-            //app.UseSecurityHeaders();
+            app.UseSecurityHeaders();
         }
     }
 }

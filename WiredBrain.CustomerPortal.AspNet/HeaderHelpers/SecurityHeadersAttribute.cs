@@ -10,7 +10,8 @@ namespace WiredBrain.CustomerPortal.AspNet.HeaderHelpers
 
             if (result is ViewResult)
             {
-                context.HttpContext.Response.Headers.Add("HeaderType", "HeaderValue");
+                context.HttpContext.Response.Headers
+                    .Add("HeaderType", "HeaderValue");
             }
         }
     }

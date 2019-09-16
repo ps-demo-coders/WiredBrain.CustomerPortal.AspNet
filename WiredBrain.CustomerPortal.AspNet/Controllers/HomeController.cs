@@ -3,11 +3,13 @@ using System.Configuration;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using WiredBrain.CustomerPortal.AspNet.HeaderHelpers;
 using WiredBrain.CustomerPortal.Web.Models;
 using WiredBrain.CustomerPortal.Web.Repositories;
 
 namespace WiredBrain.CustomerPortal.Web.Controllers
-{
+{  
+    [SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly ICustomerRepository repo;
