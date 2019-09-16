@@ -40,19 +40,12 @@ namespace WiredBrain.CustomerPortal.Web.Controllers
         public async Task<ActionResult> LoyaltyOverview(int loyaltyNumber)
         {
             ViewBag.Title = "Your points";
-            var cookieName = "LoyaltyInfo";
 
-            if (Request.Cookies[cookieName] != null)
-            {
-                var loyaltyInfo = JsonConvert.DeserializeObject<LoyaltyModel>(Request.Cookies[cookieName].Value);
-                return View(loyaltyInfo);
-            }
             var customer = await repo.GetCustomerByLoyaltyNumber(loyaltyNumber);
             var pointsNeeded = int.Parse(ConfigurationManager.AppSettings["CustomerPortalSettings:PointsNeeded"]);
 
             var loyaltyModel = LoyaltyModel.FromCustomer(customer, pointsNeeded);
-            Response.Cookies.Add(new System.Web.HttpCookie("LoyaltyInfo", JsonConvert.SerializeObject(loyaltyModel)) {
-                Expires = DateTime.Now.AddHours(2) });
+
             return View(loyaltyModel);
         }
 

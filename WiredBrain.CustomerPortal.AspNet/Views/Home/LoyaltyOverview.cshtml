@@ -1,5 +1,6 @@
 ﻿@model WiredBrain.CustomerPortal.Web.Models.LoyaltyModel
 
+<div>@Request.QueryString["loyaltyNumber"]</div>
 <h2 style="color:green;text-align:center;">
     Hi @Model.CustomerName! You're on your way to a free coffee!
 </h2>
@@ -20,8 +21,8 @@
     <h3>Your favorite drink:</h3>
 </div>
 <div class="row">
-    <h6>@Model.FavoriteDrink</h6>
+    <h6>@Html.Raw(Model.FavoriteDrink)</h6>
 </div>
 <div class="row">
-    <a asp-action="EditFavorite" asp-route-loyaltyNumber="@Model.LoyaltyNumber" class="btn btn-primary">Edit</a>
+    @Html.ActionLink("Edit", "EditFavorite", new { loyaltyNumber = @Model.LoyaltyNumber }, new { @class = "btn btn-primary" })
 </div>
