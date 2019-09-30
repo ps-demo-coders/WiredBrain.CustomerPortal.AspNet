@@ -1,10 +1,10 @@
 ﻿@model WiredBrain.CustomerPortal.Web.Models.LoyaltyModel
 
 <div>@Request.QueryString["loyaltyNumber"]</div>
-<h2 style="color:green;text-align:center;">
+<h2 class="welcomeHeader">
     Hi @Model.CustomerName! You're on your way to a free coffee!
 </h2>
-<h5 style="color:green;text-align:center;" class="mb-md-3">
+<h5 class="welcomeHeader" class="mb-md-3">
     Just @Model.PointsToGo more points until your next!
     @if (Model.FreeCoffees > 0)
     {
@@ -14,7 +14,8 @@
 
 <div class="container">
     <div class="progress">
-        <div class="progress-bar" style="width:@Model.PercentageAchieved%"></div>
+        @*<div class="progress-bar" style="width:@Model.PercentageAchieved%"></div>*@
+        <progress max="100" value="@Model.PercentageAchieved" class="w-100"></progress>
     </div>
 </div>
 <div class="row mt-md-5">

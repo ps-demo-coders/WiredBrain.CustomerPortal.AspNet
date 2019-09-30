@@ -9,7 +9,7 @@
     {
     @Html.HiddenFor(m => m.LoyaltyNumber)
     <div class="form-group">
-        @Html.EditorFor(m => m.Favorite)
+        @Html.TextBoxFor(m => m.Favorite, new { @class = "w-100" })
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
     }
