@@ -8,14 +8,16 @@ namespace WiredBrain.CustomerPortal.Web.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly CustomerPortalDbContext dbContext;
+        private static CustomerPortalDbContext dbContext;
 
         public CustomerRepository()
         {
-            var connection = Effort.DbConnectionFactory.CreateTransient();
-            dbContext = new CustomerPortalDbContext(connection);
-            if (!dbContext.Customers.Any())
+            if (dbContext == null)
+            {
+                var connection = Effort.DbConnectionFactory.CreateTransient();
+                dbContext = new CustomerPortalDbContext(connection);
                 dbContext.Seed();
+            }
         }
 
         public async Task<Customer> GetCustomerByLoyaltyNumber(int loyaltyNumber)
