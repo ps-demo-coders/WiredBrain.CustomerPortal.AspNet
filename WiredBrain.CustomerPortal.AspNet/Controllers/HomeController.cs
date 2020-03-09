@@ -54,22 +54,18 @@ namespace WiredBrain.CustomerPortal.Web.Controllers
             return View(loyaltyModel);
         }
 
-        public async Task<ActionResult> EditFavorite(int loyaltyNumber)
+        public async Task<ActionResult> EditProfile(int loyaltyNumber)
         {
-            ViewBag.Title = "Edit favorite";
+            ViewBag.Title = "Edit profile";
 
             var customer = await repo.GetCustomerByLoyaltyNumber(loyaltyNumber);
-            return View(new EditFavoriteModel
-            {
-                LoyaltyNumber = customer.LoyaltyNumber,
-                Favorite = customer.FavoriteDrink
-            });
+            return View(ProfileModel.FromCustomer(customer));
         }
 
         [HttpPost]
-        public async Task<ActionResult> EditFavorite(EditFavoriteModel model)
+        public async Task<ActionResult> EditProfile(ProfileModel model)
         {
-            await repo.SetFavorite(model);
+            await repo.SetProfile(model);
             return RedirectToAction("LoyaltyOverview", new { loyaltyNumber = model.LoyaltyNumber });
         }
     }

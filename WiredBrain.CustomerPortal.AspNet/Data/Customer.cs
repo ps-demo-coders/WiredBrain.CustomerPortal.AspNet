@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WiredBrain.CustomerPortal.Web.Data
 {
@@ -18,5 +15,17 @@ namespace WiredBrain.CustomerPortal.Web.Data
 
         [StringLength(400)]
         public string FavoriteDrink { get; set; }
+
+        [StringLength(200)]
+        public string Address { get; set; }
+        [StringLength(10)]
+        public string Zip { get; set; }
+        [StringLength(50)]
+        public string City { get; set; }
+        [StringLength(200)]
+        public string EmailAddress { get; set; }
+
+        public DateTime BirthDate { get; set; }
+        public bool AddLiquor { get; set; }
     }
 }
