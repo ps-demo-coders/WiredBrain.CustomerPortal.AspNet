@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using WiredBrain.CustomerPortal.Web.Data;
 using WiredBrain.CustomerPortal.Web.Models;
@@ -19,7 +20,7 @@ namespace WiredBrain.CustomerPortal.Web.Repositories
 
         public async Task<Customer> GetCustomerByLoyaltyNumber(int loyaltyNumber)
         {
-            var customer = dbContext.Customers.SingleOrDefault(c => c.LoyaltyNumber == loyaltyNumber);
+            var customer = await dbContext.Customers.SingleOrDefaultAsync(c => c.LoyaltyNumber == loyaltyNumber);
             return customer;
         }
 
