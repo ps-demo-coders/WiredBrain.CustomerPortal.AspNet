@@ -9,39 +9,45 @@
     {
         @Html.HiddenFor(m => m.LoyaltyNumber)
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-    </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Address)
-            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Zip)
+                @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+            </div>
         </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Zip)
-            @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.City)
-            @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.EmailAddress)
-            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.BirthDate)
-            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
-        </div>
-        <div class="form-check">
-            @Html.CheckBoxFor(m => m.AddLiquor, new { @class = "form-check-input" })
-            @Html.LabelFor(m => m.AddLiquor)
-        </div>
+        <div class="col">
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmailAddress)
+                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.BirthDate)
+                @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control" })
+            </div>
+            <div class="form-check">
+                @Html.CheckBoxFor(m => m.AddLiquor, new { @class = "form-check-input" })
+                @Html.LabelFor(m => m.AddLiquor)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Favorite)
-            @Html.TextBoxFor(m => m.Favorite, new { @class = "form-control" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Favorite)
+                @Html.TextBoxFor(m => m.Favorite, new { @class = "form-control" })
+            </div>
         </div>
+    </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     }
 </div>
