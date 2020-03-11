@@ -14,12 +14,17 @@ namespace WiredBrain.CustomerPortal.Web.Models
         public string Address { get; set; }
         public string Zip { get; set; }
         public string City { get; set; }
+
         [Display(Name = "Email address")]
         public string EmailAddress { get; set; }
+        [Display(Name = "Email address repeated")]
+        public string EmailAddressRepeated { get; set; }
 
         public DateTime BirthDate { get; set; }
         [Display(Name = "Add liquor to your coffee?")]
         public bool AddLiquor { get; set; }
+        [Display(Name = "Number of sugar lumps")]
+        public int SugarLumps { get; set; }
 
         public static ProfileModel FromCustomer(Customer customer)
         {
