@@ -14,48 +14,59 @@
             <div class="form-group">
                 @Html.LabelFor(m => m.Name)
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                
+                @Html.ValidationMessageFor(m => m.Name)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Address)
                 @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Address)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.Zip)
                 @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Zip)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.City)
                 @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.City)
             </div>
             <div class="form-group">
                 @Html.LabelFor(m => m.BirthDate)
                 @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", @type = "date" })
+                @Html.ValidationMessageFor(m => m.BirthDate)
             </div>
         </div>
         <div class="col">
             <div class="form-group">
                 @Html.LabelFor(m => m.EmailAddress)
                 @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EmailAddress)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.EmailAddressRepeated)
                 @Html.TextBoxFor(m => m.EmailAddressRepeated, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.EmailAddressRepeated)
             </div>
 
             <div class="form-check">
                 @Html.CheckBoxFor(m => m.AddLiquor, new { @class = "form-check-input" })
                 @Html.LabelFor(m => m.AddLiquor)
+                @Html.ValidationMessageFor(m => m.AddLiquor)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.SugarLumps)
-                @Html.TextBoxFor(m => m.SugarLumps, new { @class = "form-control" @type = "number" })
+                @Html.TextBoxFor(m => m.SugarLumps, new { @class = "form-control", @type = "number" })
+                @Html.ValidationMessageFor(m => m.SugarLumps)
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Favorite)
                 @Html.TextBoxFor(m => m.Favorite, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Favorite)
             </div>
         </div>
     </div>

@@ -56,8 +56,12 @@ namespace WiredBrain.CustomerPortal.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> EditProfile(ProfileModel model)
         {
-            await repo.SetProfile(model);
-            return RedirectToAction("LoyaltyOverview", new { loyaltyNumber = model.LoyaltyNumber });
+            if (ModelState.IsValid)
+            {
+                await repo.SetProfile(model);
+                return RedirectToAction("LoyaltyOverview", new { loyaltyNumber = model.LoyaltyNumber });
+            }
+            return View(model);
         }
     }
 }
