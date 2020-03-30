@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using WiredBrain.CustomerPortal.Web.Models;
@@ -56,12 +57,25 @@ namespace WiredBrain.CustomerPortal.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> EditProfile(ProfileModel model)
         {
+            if (model.AddLiquor && (DateTime.Now.Year - model.BirthDate.Year < 21))
+                ModelState.AddModelError("", "Must be 21 to purchase liquor");
             if (ModelState.IsValid)
             {
                 await repo.SetProfile(model);
                 return RedirectToAction("LoyaltyOverview", new { loyaltyNumber = model.LoyaltyNumber });
             }
             return View(model);
+        }
+
+        public ActionResult CheckZip(string zip, string address)
+        {
+            //check database
+            var dbResult = false;
+
+            if (dbResult == false)
+                return Json("Non-existent ZIP code", JsonRequestBehavior.AllowGet);
+
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.ModelBinding;
+using System.Web.Mvc;
 using WiredBrain.CustomerPortal.AspNet.Resources;
+using WiredBrain.CustomerPortal.AspNet.Validations;
 using WiredBrain.CustomerPortal.Web.Data;
+using WiredBrain.CustomerPortal.Web.Validations;
 
 namespace WiredBrain.CustomerPortal.Web.Models
 {
-    public class ProfileModel
+    public class ProfileModel//: IValidatableObject
     {
         public int LoyaltyNumber { get; set; }
         [Display(Name = "Favorite drink")]
@@ -14,11 +18,12 @@ namespace WiredBrain.CustomerPortal.Web.Models
         [Required]
         public string Name { get; set; }
         public string Address { get; set; }
-        [RegularExpression(@"^\d{5}$",
-            ErrorMessageResourceType = typeof(ValidationMessages),
-            ErrorMessageResourceName = "Zip")]
+        [Zip]
+        [Remote(action: "CheckZip", controller: "Home", AdditionalFields = nameof(Address))]
         public string Zip { get; set; }
         [StringLength(50)]
+        [Required]
+        [UpperCase(3)]
         public string City { get; set; }
 
         [Display(Name = "Email address")]
@@ -26,11 +31,12 @@ namespace WiredBrain.CustomerPortal.Web.Models
         [Required]
         public string EmailAddress { get; set; }
         [Display(Name = "Email address repeated")]
-        [Compare("EmailAddress")]
+        [System.ComponentModel.DataAnnotations.Compare("EmailAddress")]
         public string EmailAddressRepeated { get; set; }
 
         public DateTime BirthDate { get; set; }
         [Display(Name = "Add liquor to your coffee?")]
+        //[Age21Required]
         public bool AddLiquor { get; set; }
         [Display(Name = "Number of sugar lumps")]
         [Range(0, 10)]
@@ -51,5 +57,14 @@ namespace WiredBrain.CustomerPortal.Web.Models
                 AddLiquor = customer.AddLiquor
             };
         }
+
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+            //if (AddLiquor && (DateTime.Now.Year - BirthDate.Year < 21))
+            //    yield return new ValidationResult("Must be 21 to purchase liquor")
+            //    {
+
+            //    };
+        //}
     }
 }
