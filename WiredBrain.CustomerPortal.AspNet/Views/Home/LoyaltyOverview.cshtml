@@ -23,5 +23,5 @@
     <h6>@Model.FavoriteDrink</h6>
 </div>
 <div class="row">
-    <a asp-action="EditFavorite" asp-route-loyaltyNumber="@Model.LoyaltyNumber" class="btn btn-primary">Edit</a>
+    @Html.ActionLink("Edit", "EditFavorite", null, new { @class = "btn btn-primary" })
 </div>

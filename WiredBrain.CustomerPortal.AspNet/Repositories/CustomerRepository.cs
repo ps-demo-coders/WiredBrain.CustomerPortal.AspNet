@@ -23,11 +23,11 @@ namespace WiredBrain.CustomerPortal.Web.Repositories
             return customer;
         }
 
-        public async Task SetFavorite(EditFavoriteModel model)
+        public async Task SetFavorite(int loyaltyNumber, string favorite)
         {
-            var customer = dbContext.Customers.SingleOrDefault(c => c.LoyaltyNumber == model.LoyaltyNumber);
+            var customer = dbContext.Customers.SingleOrDefault(c => c.LoyaltyNumber == loyaltyNumber);
 
-            customer.FavoriteDrink = model.Favorite;
+            customer.FavoriteDrink = favorite;
             await dbContext.SaveChangesAsync();
         }
     }
