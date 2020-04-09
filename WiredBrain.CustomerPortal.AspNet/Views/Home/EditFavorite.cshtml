@@ -7,7 +7,7 @@
     <form asp-action="EditFavorite" style="width:100%">
         @Html.HiddenFor(m => m.LoyaltyNumber)
         <div class="form-group">
-            <input type="text" class="form-control" asp-for="Favorite" id="fav" />
+            @Html.TextBoxFor(m => m.Favorite, new { @class="form-control" })
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
