@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using System.Text.RegularExpressions
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -7,10 +8,19 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    @{
+        var returnUrl = @Request.QueryString["returnUrl"];
+        var regex = new Regex(@"^\d+$");
+        returnUrl = regex.IsMatch(returnUrl) ? returnUrl : null;
+    }
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <img asp-append-version="true" alt="Logo" src="~/wired-brain-coffee-logo.png" style="max-width:100%" />
+                @if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    <a href="@returnUrl">Go back</a>
+                }
+                <img id="logo" asp-append-version="true" alt="Logo" src="~/wired-brain-coffee-logo.png" style="max-width:100%" />
             </div>
             <div class="col-md-10 mt-md-5">
                 <span class="title">@ViewBag.Title</span>

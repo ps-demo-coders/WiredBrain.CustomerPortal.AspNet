@@ -1,13 +1,12 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Newtonsoft.Json;
 using WiredBrain.CustomerPortal.Web.Models;
 using WiredBrain.CustomerPortal.Web.Repositories;
 
 namespace WiredBrain.CustomerPortal.Web.Controllers
 {
+    //[SecurityHeaders]
     public class HomeController : Controller
     {
         private readonly ICustomerRepository repo;
@@ -46,7 +45,8 @@ namespace WiredBrain.CustomerPortal.Web.Controllers
             return View(loyaltyModel);
         }
 
-        public async Task<ActionResult> EditFavorite(int loyaltyNumber)
+        [ValidateInput(false)]
+        public async Task<ActionResult> EditFavorite(int loyaltyNumber = 0)
         {
             ViewBag.Title = "Edit favorite";
 
